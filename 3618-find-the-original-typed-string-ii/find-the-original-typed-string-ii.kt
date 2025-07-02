@@ -55,6 +55,7 @@ class Solution {
         for (i in groups.size until k) {
             invalid = (invalid + dp[i]) % MOD
         }
+        // test comment
         return ((total - invalid + MOD) % MOD).toInt()
     }
 }
