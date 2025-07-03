@@ -10,7 +10,7 @@ class Solution {
 
     fun find(n: Int): Int? {
         var left = 1
-        var right = minOf(n, 46340)
+        var right = minOf(n / 2, 46340)
 
         while (left <= right) {
             val mid = left + (right - left) / 2
