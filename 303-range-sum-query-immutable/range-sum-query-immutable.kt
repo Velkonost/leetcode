@@ -1,12 +1,12 @@
 class NumArray(nums: IntArray) {
 
-    private val list = nums
-    fun sumRange(left: Int, right: Int): Int {
-        var res = 0
-        for (i in left..right) {
-            res += list[i]
+    private val list = IntArray(nums.size + 1).also {
+        for (i in 1..it.lastIndex) {
+            it[i] = it[i - 1] + nums[i - 1]
         }
-        return res
+    }
+    fun sumRange(left: Int, right: Int): Int {
+        return list[right + 1] - list[left]
     }
 
 }
