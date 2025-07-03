@@ -1,15 +1,16 @@
 class Solution {
     fun isUgly(n: Int): Boolean {
-        if (n == 1) return true
-        val factors = setOf(2, 3, 5)
-        var number = n
-
-        for (factor in factors) {
-            while (number != 0 && number % factor == 0) {
-                number /= factor
-            }
+        if (n <= 0) {
+            return false
         }
-
-        return number == 1
+        return n div 2 div 3 div 5 == 1
+    }
+    
+    private infix fun Int.div(dividend: Int): Int {
+        var num = this
+        while (num % dividend == 0) {
+            num /= dividend
+        }
+        return num
     }
 }
