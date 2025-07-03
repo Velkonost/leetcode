@@ -9,23 +9,26 @@
  * }
  */
 class Solution {
+    val res = mutableListOf<String>()
     fun binaryTreePaths(root: TreeNode?): List<String> {
-        return search(root, "", emptyList())
+        search(root, "")
+        return res
     }
 
     fun search(
         node: TreeNode?,
-        path: String,
-        list: List<String>
-    ): List<String> {
-        if (node == null) return list
+        path: String   
+    ){
+        if (node == null) return
         val updatedPath = if (path.isEmpty()) "${node.`val`}"
         else "$path->${node.`val`}"
         
-        if (node.left == null && node.right == null) return list + updatedPath
+        if (node.left == null && node.right == null) {
+            res.add(updatedPath)
+            return 
+        }
 
-        val leftList = search(node.left, updatedPath, list)
-        val rightList = search(node.right, updatedPath, list)
-        return leftList + rightList
+        node.left?.let { search(it, updatedPath) }
+        node.right?.let { search(it, updatedPath) }
     }
 }
