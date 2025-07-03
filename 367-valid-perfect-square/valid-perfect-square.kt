@@ -9,9 +9,17 @@ class Solution {
     }
 
     fun find(n: Int): Int? {
-        for (i in 1..n/2) {
-            if (n % i == 0 && n / i == i) return i
+        var left = 1
+        var right = minOf(n, 46340)
+
+        while (left <= right) {
+            val mid = left + (right - left) / 2
+            val sqr = mid * mid
+            if (sqr == n) return mid
+            else if (sqr < n) left = mid + 1
+            else right = mid - 1
         }
+
         return null
     }
 }
