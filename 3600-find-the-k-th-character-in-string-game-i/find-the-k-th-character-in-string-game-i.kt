@@ -6,6 +6,8 @@ class Solution {
             for (char in word) {
                 val nextChar = char + 1
                 updatedWord += nextChar
+
+                if (updatedWord.length > k) break
             }
             word = updatedWord
         }
