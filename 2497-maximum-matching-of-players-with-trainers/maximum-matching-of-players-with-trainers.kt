@@ -1,17 +1,17 @@
 class Solution {
     fun matchPlayersAndTrainers(players: IntArray, trainers: IntArray): Int {
-        val sortedPlayers = players.sorted()
-        val sortedTrainers = trainers.sorted()
+        players.sort()
+        trainers.sort()
 
         var i = 0
         var j = 0
         var res = 0
         while (i < players.size && j < trainers.size) {
-            if (sortedPlayers[i] <= sortedTrainers[j]) {
+            if (players[i] <= trainers[j]) {
                 res ++
                 i ++
                 j ++
-            } else if (sortedPlayers[i] > sortedTrainers[j]) {
+            } else if (players[i] > trainers[j]) {
                 j ++
             } else i ++
         }
